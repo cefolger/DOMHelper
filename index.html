@@ -4,11 +4,25 @@
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="style.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-  <script src="DOMHelper.js"></script>
+  <script src="lib/DOMHelper.js"></script>
+  <script src="lib/extensions.js"></script>
+  <script src="lib/DOMHelper.js"></script>
+
+  <script>
+    $(document).ready(function() {
+        $("*[data-example='basic']").html("Hello, this is a basic example");
+
+    });
+  </script>
 </head>
 <body>
 
 <header><h1>DOM Helper</h1></header>
+
+<article>
+    <section data-example="basic"></section>
+    
+</article>
 
 </body>
 </html>
