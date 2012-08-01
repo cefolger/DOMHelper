@@ -21,6 +21,23 @@
                 'field2'
             ]);
         });
+
+        $("*[data-example='adhoctable']").load('examples/adhoctable.html', function() {
+            var $context = $(this);
+            var ob = {
+                'firstname': 'Johnny',
+                'lastname': 'Thunders',
+                'color': 'green'
+            };
+
+            DOMHelper.contextParse($context, ob, [
+                'firstname', 
+                'lastname',
+                'color'
+            ], function() {
+                $("td:last", $context).css('background-color', ob.color);
+            });
+        });
     });
   </script>
 </head>
@@ -30,6 +47,7 @@
 
 <article>
     <section data-example="basic"></section>
+    <section data-example="adhoctable"></section>
     
 </article>
 
