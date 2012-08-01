@@ -10,8 +10,17 @@
 
   <script>
     $(document).ready(function() {
-        $("*[data-example='basic']").html("Hello, this is a basic example");
+        $("*[data-example='basic']").load('examples/basic.html', function() {
+            var ob = {
+                'field1': 'this is field 1',
+                'field2': 'this is field 2'
+            };
 
+            DOMHelper.contextParse($(this), ob, [
+                'field1', 
+                'field2'
+            ]);
+        });
     });
   </script>
 </head>
