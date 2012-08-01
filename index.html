@@ -3,20 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="style.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
   <script src="lib/DOMHelper.js"></script>
   <script src="lib/extensions.js"></script>
   <script src="lib/DOMHelper.js"></script>
 
   <script>
     $(document).ready(function() {
-        $("*[data-example='basic']").load('examples/basic.html', function() {
+        var $basic = $("*[data-example='basic']");
+        var $basic1 = $("*[data-example='basic1']");
+        var $basic2 = $("*[data-example='basic2']");
+        DOMHelper.cachedLoad($basic, 'examples/basic.html', function() {
             var ob = {
                 'field1': 'this is field 1',
                 'field2': 'this is field 2'
             };
 
-            DOMHelper.contextParse($(this), ob, [
+            DOMHelper.contextParse($basic, ob, [
+                'field1', 
+                'field2'
+            ]);
+
+            DOMHelper.cachedLoad($basic1, 'examples/basic.html', function() {
+                var ob = {
+                    'field1': 'this is field 11',
+                    'field2': 'this is field 21'
+                };
+
+                DOMHelper.contextParse($basic1, ob, [
+                    'field1', 
+                    'field2'
+                ]);
+            });
+        });
+
+
+        DOMHelper.cachedLoad($basic2, 'examples/basic.html', function() {
+            var ob = {
+                'field1': 'this is field 12',
+                'field2': 'this is field 22'
+            };
+
+            DOMHelper.contextParse($basic2, ob, [
                 'field1', 
                 'field2'
             ]);
@@ -47,6 +75,8 @@
 
 <article>
     <section data-example="basic"></section>
+    <section data-example="basic1"></section>
+    <section data-example="basic2"></section>
     <section data-example="adhoctable"></section>
     
 </article>
