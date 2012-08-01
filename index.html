@@ -11,8 +11,8 @@
   <script>
     $(document).ready(function() {
         var $basic = $("*[data-example='basic']");
-        var $basic1 = $("*[data-example='basic1']");
-        var $basic2 = $("*[data-example='basic2']");
+        var $adhoctable = $("*[data-example='adhoctable']");
+
         DOMHelper.cachedLoad($basic, 'examples/basic.html', function() {
             var ob = {
                 'field1': 'this is field 1',
@@ -23,47 +23,21 @@
                 'field1', 
                 'field2'
             ]);
-
-            DOMHelper.cachedLoad($basic1, 'examples/basic.html', function() {
-                var ob = {
-                    'field1': 'this is field 11',
-                    'field2': 'this is field 21'
-                };
-
-                DOMHelper.contextParse($basic1, ob, [
-                    'field1', 
-                    'field2'
-                ]);
-            });
         });
 
-
-        DOMHelper.cachedLoad($basic2, 'examples/basic.html', function() {
-            var ob = {
-                'field1': 'this is field 12',
-                'field2': 'this is field 22'
-            };
-
-            DOMHelper.contextParse($basic2, ob, [
-                'field1', 
-                'field2'
-            ]);
-        });
-
-        $("*[data-example='adhoctable']").load('examples/adhoctable.html', function() {
-            var $context = $(this);
+        DOMHelper.cachedLoad($adhoctable, 'examples/adhoctable.html', function() {
             var ob = {
                 'firstname': 'Johnny',
                 'lastname': 'Thunders',
                 'color': 'green'
             };
 
-            DOMHelper.contextParse($context, ob, [
+            DOMHelper.contextParse($adhoctable, ob, [
                 'firstname', 
                 'lastname',
                 'color'
             ], function() {
-                $("td:last", $context).css('background-color', ob.color);
+                $("td:last", $adhoctable).css('background-color', ob.color);
             });
         });
     });
@@ -75,8 +49,6 @@
 
 <article>
     <section data-example="basic"></section>
-    <section data-example="basic1"></section>
-    <section data-example="basic2"></section>
     <section data-example="adhoctable"></section>
     
 </article>
