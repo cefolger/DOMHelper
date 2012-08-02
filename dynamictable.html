@@ -41,15 +41,17 @@
 				            	'header': 'goodbye'
 				            }];
             
-            
-            DOMHelper.iterate('*[data-role="generate-column"]')
-            		 .contextParse($basic, columns, ['header']) 							/* generate th */ 
-            		 .iterate('*[data-role="generate-row-column"]')
-		             .contextParse($basic,columns, ['header'], function(element, value) {	/* generate row template */ 
+            		/* generate th */
+            DOMHelper.generate('*[data-role="generate-column"]')     						
+            		 .using($basic, columns, ['header']) 	 
+            		 /* generate row template */ 
+            		 .generate('*[data-role="generate-row-column"]')
+		             .using($basic,columns, ['header'], function(element, value) {	
 		            	element.addClass(value); 
 		             })
-		             .iterate('*[data-role="generate-row"]')
-		             .contextParse($basic, ob, [											/* generate each row */ 
+		             /* generate each row */ 
+		             .generate('*[data-role="generate-row"]')
+		             .using($basic, ob, [											
 		                'firstname', 
 		                'lastname',
 		                'color'
