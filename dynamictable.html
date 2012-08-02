@@ -26,19 +26,32 @@
                 }];
 
             var columns = [{
-				            	'header': 'foo',
+				            	'header': 'firstname',
 				            },
 				            {
-				            	'header': 'bar'	
+				            	'header': 'lastname'	
 				            },
 				            {
 				            	'header': 'testing'
+				            },
+				            {
+				            	'header': 'hello'
+				            },
+				            {
+				            	'header': 'goodbye'
 				            }];
             
             
+            // generate th
             DOMHelper.iterate('*[data-role="generate-column"]').contextParse($basic, columns, ['header']);
-            DOMHelper.iterate('*[data-role="generate-row-column"]').contextParse($basic,columns, ['header']); 
-            DOMHelper.iterate('*[data-role="generate-row"]').contextParse($basic, columns, [
+            
+            // generate the row template
+            DOMHelper.iterate('*[data-role="generate-row-column"]').contextParse($basic,columns, ['header'], function(element, value) {
+            	element.addClass(value); 
+            }); 
+            
+            // generate each row 
+            DOMHelper.iterate('*[data-role="generate-row"]').contextParse($basic, ob, [
                 'firstname', 
                 'lastname',
                 'color'
