@@ -30,10 +30,15 @@
 				            },
 				            {
 				            	'header': 'bar'	
+				            },
+				            {
+				            	'header': 'testing'
 				            }];
             
-            DOMHelper.iterate('*[data-role="generate-column"]').contextParse($basic, columns, ['header']); 
-            DOMHelper.iterate('*[data-role="iterator"]').contextParse($basic, ob, [
+            
+            DOMHelper.iterate('*[data-role="generate-column"]').contextParse($basic, columns, ['header']);
+            DOMHelper.iterate('*[data-role="generate-row-column"]').contextParse($basic,columns, ['header']); 
+            DOMHelper.iterate('*[data-role="generate-row"]').contextParse($basic, columns, [
                 'firstname', 
                 'lastname',
                 'color'
