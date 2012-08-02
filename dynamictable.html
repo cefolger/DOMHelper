@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="style.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
+  <script src="lib/DOMHelper.js"></script>
+  <script src="lib/extensions.js"></script>
+  <script src="lib/DOMHelper.js"></script>
+
+  <script>
+    $(document).ready(function() {
+        var $basic = $("*[data-example='basic']");
+        var $adhoctable = $("*[data-example='adhoctable']");
+
+        DOMHelper.cachedLoad($basic, 'examples/dynamictable.html', function() {
+            var ob = [{
+               	   'firstname': 'this is field 1',
+                   'lastname': 'this is field 2',
+                   'color': 'red'
+                },
+                {
+               	'firstname': 'another row', 
+               	'lastname': 'still another row',
+               	'color': 'green'
+                }];
+
+            DOMHelper.iterate(2).contextParse($basic, ob, [
+                'firstname', 
+                'lastname',
+                'color'
+            ]);
+        });
+    });
+  </script>
+</head>
+<body>
+
+<header><h1>DOM Helper</h1></header>
+
+<article>
+    <section data-example="basic"></section>
+    <section data-example="adhoctable"></section>
+    
+</article>
+
+</body>
+</html>
