@@ -46,16 +46,14 @@
             		 .using($basic, columns, ['header']) 	 
             		 /* generate row template */ 
             		 .generate('*[data-role="generate-row-column"]')
-		             .using($basic,columns, ['header'], function(element, value) {	
+		             .using($basic,columns, ['header'], function(element, value, object) {	
 		            	element.addClass(value); 
 		             })
 		             /* generate each row */ 
 		             .generate('*[data-role="generate-row"]')
-		             .using($basic, ob, [											
-		                'firstname', 
-		                'lastname',
-		                'color'
-		            ]);
+		             .using($basic, ob, ['firstname', 'lastname', 'color'], function(element, value, object) {
+	            	 	element.css({'color': object.color}); 
+	             	  }); 
         });
     });
   </script>
