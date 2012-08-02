@@ -43,7 +43,28 @@
             
             
             // generate th
-            DOMHelper.iterate('*[data-role="generate-column"]').contextParse($basic, columns, ['header']);
+            DOMHelper.iterate('*[data-role="generate-column"]')
+            		 .contextParse($basic, columns, ['header']); 
+            		 
+            
+            /**
+            	iterate step: 
+            		
+            	this();
+            	return {
+            		contextParse:
+            			previousFunction.contextParse(); 
+            			do all this stuff that iterate does 
+            	}
+            	
+            	contextParse step: 
+            	return {
+            		contextParse: 
+            			previousFunction.contextParse(); 
+            			do all this stuff that context parse does 
+            	}
+            
+            */ 
             
             // generate the row template
             DOMHelper.iterate('*[data-role="generate-row-column"]').contextParse($basic,columns, ['header'], function(element, value) {
