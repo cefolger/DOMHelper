@@ -25,7 +25,9 @@
                	'color': 'green'
                 }];
 
-            DOMHelper.iterate(2).contextParse($basic, ob, [
+            
+            
+            DOMHelper.iterate('*[data-role="iterator"]').contextParse($basic, ob, [
                 'firstname', 
                 'lastname',
                 'color'
