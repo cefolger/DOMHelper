@@ -25,8 +25,14 @@
                	'color': 'green'
                 }];
 
+            var columns = [{
+				            	'header': 'foo',
+				            },
+				            {
+				            	'header': 'bar'	
+				            }];
             
-            
+            DOMHelper.iterate('*[data-role="generate-column"]').contextParse($basic, columns, ['header']); 
             DOMHelper.iterate('*[data-role="iterator"]').contextParse($basic, ob, [
                 'firstname', 
                 'lastname',
