@@ -42,41 +42,18 @@
 				            }];
             
             
-            // generate th
             DOMHelper.iterate('*[data-role="generate-column"]')
-            		 .contextParse($basic, columns, ['header']); 
-            		 
-            
-            /**
-            	iterate step: 
-            		
-            	this();
-            	return {
-            		contextParse:
-            			previousFunction.contextParse(); 
-            			do all this stuff that iterate does 
-            	}
-            	
-            	contextParse step: 
-            	return {
-            		contextParse: 
-            			previousFunction.contextParse(); 
-            			do all this stuff that context parse does 
-            	}
-            
-            */ 
-            
-            // generate the row template
-            DOMHelper.iterate('*[data-role="generate-row-column"]').contextParse($basic,columns, ['header'], function(element, value) {
-            	element.addClass(value); 
-            }); 
-            
-            // generate each row 
-            DOMHelper.iterate('*[data-role="generate-row"]').contextParse($basic, ob, [
-                'firstname', 
-                'lastname',
-                'color'
-            ]);
+            		 .contextParse($basic, columns, ['header']) 							/* generate th */ 
+            		 .iterate('*[data-role="generate-row-column"]')
+		             .contextParse($basic,columns, ['header'], function(element, value) {	/* generate row template */ 
+		            	element.addClass(value); 
+		             })
+		             .iterate('*[data-role="generate-row"]')
+		             .contextParse($basic, ob, [											/* generate each row */ 
+		                'firstname', 
+		                'lastname',
+		                'color'
+		            ]);
         });
     });
   </script>
